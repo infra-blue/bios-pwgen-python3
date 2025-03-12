@@ -1,22 +1,5 @@
 #!/usr/bin/python
 
-# Copyright 2009-2010:  dogbert <dogber1@gmail.com>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-
 import os
 
 rotationMatrix1 = [7, 1, 5, 3, 0, 6, 2, 5, 2, 3, 0, 6, 1, 7, 6, 1, 5, 2, 7, 1, 0, 3, 7, 6, 1, 0, 5, 2, 1, 5, 7, 3, 2, 0, 6]
@@ -59,7 +42,7 @@ print("hexadecimal code from which the password can be calculated,")
 print("e.g. 07088120410C0000")
 print("")
 print("Please enter the code: ")
-code = raw_input()
+code = input()
 hash = []
 for i in range(1, len(code) // 2):
 	hash.append(int(code[2*i]+code[2*i+1],16))
@@ -70,27 +53,26 @@ asciiPwd = ""
 for x in decryptHash(hash, key, rotationMatrix1):
 	hexPwd += "%02x" % x
 	asciiPwd += chr(x)
-print "First Key"
-print "Scancode Password: %s" % keyboardEncToAscii(decryptHash(hash, key, rotationMatrix1))
-print "ASCII Password   : %s" % asciiPwd 
-print "Hex Password     : %s" % hexPwd 
-print ""
+print("First Key")
+print("Scancode Password: %s" % keyboardEncToAscii(decryptHash(hash, key, rotationMatrix1)))
+print("ASCII Password   : %s" % asciiPwd)
+print("Hex Password     : %s" % hexPwd)
+print("")
 
 hexPwd = ""
 asciiPwd = ""
 for x in decryptHash(hash, key, rotationMatrix2):
 	hexPwd += "%02x" % x
 	asciiPwd += chr(x)
-print "Second Key"
-print "Scancode Password: %s" % keyboardEncToAscii(decryptHash(hash, key, rotationMatrix2))
-print "ASCII Password   : %s" % asciiPwd 
-print "Hex Password     : %s" % hexPwd 
-print ""
-
+print("Second Key")
+print("Scancode Password: %s" % keyboardEncToAscii(decryptHash(hash, key, rotationMatrix2)))
+print("ASCII Password   : %s" % asciiPwd)
+print("Hex Password     : %s" % hexPwd)
+print("")
 
 if asciiPwd == "":
 	print("The password could not be calculated. Bummer.")
 
 if (os.name == 'nt'):
 	print("Press a key to exit...")
-	raw_input()
+	input()

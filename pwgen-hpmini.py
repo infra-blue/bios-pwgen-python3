@@ -47,7 +47,7 @@ print("code from which the password can be calculated,")
 print("e.g. CNU1234ABC")
 print("")
 print("Please enter the code: ")
-code = raw_input()
+code = input()
 password = decode(code)
 if password == "":
 	print("The password could not be calculated. Bummer.")
@@ -56,4 +56,4 @@ else:
 	
 if (os.name == 'nt'):
 	print("Press a key to exit...")
-	raw_input()
+	input()

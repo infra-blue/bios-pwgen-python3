@@ -1,28 +1,5 @@
 #!/usr/bin/python
 
-# Copyright 2009:  dogbert <dogber1@gmail.com>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-
-# This script generates master passwords which can be used to unlock the BIOS 
-# password of most Phoenix BIOS versions. It also works for some versions of 
-# FSI, HP and Compaq laptops which use slightly different hashing algorithms
-# in the BIOS.
-# You have to install python 2.x for running this script.
-
 import os, random
 
 keyboardDict = {  2: '1',  3: '2',  4: '3',  5: '4',  6: '5',  7: '6',  8: '7',  9: '8', 10: '9', 11: '0',
@@ -99,7 +76,7 @@ print("decimal number from which the master password can be calculated,")
 print("e.g. 12345")
 print("")
 print("Please enter the number: ")
-code = raw_input().replace('[', '').replace(']', '')
+code = input().replace('[', '').replace(']', '')
 hash = int(code)
 print("")
 print("Brute forcing passwords...")
@@ -117,4 +94,4 @@ print("Please note that the password has been encoded for the standard US")
 print("keyboard layout (QWERTY).")
 if (os.name == 'nt'):
 	print("Press a key to exit...")
-	raw_input()
+	input()
